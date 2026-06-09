@@ -1,0 +1,28 @@
+{
+  "ACME_Corp_Q3_2025": {
+    "revenue": "$45.2 billion",
+    "net_income": "$11.3 billion",
+    "operating_income": "$14.7 billion",
+    "eps": "$2.85",
+    "cash_flow": "$16.8 billion",
+    "free_cash_flow": "$14.2 billion",
+    "gross_margin": "47.2%",
+    "operating_margin": "32.5%",
+    "total_debt": "$87.5 billion",
+    "total_assets": "$285.6 billion",
+    "total_liabilities": "$198.3 billion"
+  },
+  "ACME_Corp_Q2_2025": {
+    "revenue": "$43.1 billion",
+    "net_income": "$10.5 billion",
+    "operating_income": "$13.8 billion",
+    "eps": "$2.64",
+    "cash_flow": "$15.9 billion",
+    "free_cash_flow": "$13.4 billion",
+    "gross_margin": "46.5%",
+    "operating_margin": "32.0%",
+    "total_debt": "$89.2 billion",
+    "total_assets": "$280.1 billion",
+    "total_liabilities": "$196.7 billion"
+  }
+}

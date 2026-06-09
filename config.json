@@ -1,0 +1,67 @@
+{
+  "llm": {
+    "primary_model": "qwen3:8b",
+    "fallback_models": ["llama3.1:8b", "mistral:7b"],
+    "ollama_base_url": "http://localhost:11434",
+    "temperature": 0.1,
+    "num_ctx": 8192,
+    "top_p": 0.9,
+    "repeat_penalty": 1.1,
+    "request_timeout": 120
+  },
+  "ocr": {
+    "engine": "paddleocr",
+    "language": "en",
+    "use_gpu": false,
+    "gpu_mem": 2048,
+    "use_angle_cls": true,
+    "det_db_thresh": 0.3,
+    "rec_batch_num": 6,
+    "show_log": false,
+    "min_text_length": 50
+  },
+  "embedding": {
+    "model_name": "all-MiniLM-L6-v2",
+    "dimension": 384,
+    "use_gpu": false,
+    "batch_size": 32,
+    "chunk_size": 512,
+    "chunk_overlap": 50,
+    "top_k": 5
+  },
+  "risk": {
+    "weight_revenue_decline": 0.25,
+    "weight_profit_decline": 0.20,
+    "weight_margin_compression": 0.15,
+    "weight_debt_increase": 0.15,
+    "weight_cash_flow": 0.15,
+    "weight_sentiment": 0.10,
+    "revenue_decline_threshold": -5.0,
+    "profit_decline_threshold": -10.0,
+    "margin_compression_threshold": -2.0,
+    "debt_increase_threshold": 10.0,
+    "negative_cash_flow_threshold": 0.0,
+    "low_risk_max": 30,
+    "medium_risk_max": 60,
+    "high_risk_max": 80
+  },
+  "api": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "workers": 1,
+    "reload": true,
+    "cors_origins": ["*"],
+    "max_upload_size_mb": 50
+  },
+  "frontend": {
+    "api_base_url": "http://localhost:8000",
+    "page_title": "📊 Financial Analyst",
+    "page_icon": "📊",
+    "layout": "wide",
+    "theme_primary_color": "#6366F1",
+    "theme_bg_color": "#0F172A",
+    "theme_secondary_bg": "#1E293B",
+    "theme_text_color": "#F1F5F9"
+  },
+  "log_level": "INFO"
+}
