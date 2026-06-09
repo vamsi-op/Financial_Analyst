@@ -3,12 +3,11 @@ title: Multi-Agent Financial Analyst
 emoji: 📊
 colorFrom: indigo
 colorTo: purple
-sdk: streamlit
-sdk_version: 1.45.0
-app_file: app/frontend/app.py
+sdk: docker
+app_port: 7860
 pinned: false
 license: mit
-short_description: AI-powered earnings report analyzer using multi-agent pipeline
+short_description: AI earnings report analyzer — multi-agent
 ---
 
 # 📊 Multi-Agent Financial Analyst
