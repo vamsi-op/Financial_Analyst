@@ -129,7 +129,7 @@ def render_sidebar():
             unsafe_allow_html=True,
         )
         uploaded_file = st.file_uploader(
-            "upload_label",          # label hidden by CSS
+            " ",
             type=["pdf", "txt"],
             label_visibility="collapsed",
             help="Upload a quarterly earnings report (PDF or plain text, max 200 MB).",

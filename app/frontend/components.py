@@ -58,24 +58,69 @@ def apply_custom_css():
         /* Hide the redundant "collapse" arrow label text */
         [data-testid="collapsedControl"] span { display: none !important; }
 
-        /* ── File uploader fix — remove the double "Browse" label ── */
+        /* ── File uploader – full override ───────────────────── */
+        /* Hide the label element entirely */
+        [data-testid="stFileUploader"] > label,
         [data-testid="stFileUploader"] label {
             display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            overflow: hidden !important;
         }
+
+        /* Style the dropzone container */
         [data-testid="stFileUploaderDropzone"] {
             background: rgba(99,102,241,0.06) !important;
             border: 1.5px dashed rgba(99,102,241,0.35) !important;
             border-radius: 12px !important;
+            padding: 1.2rem !important;
             transition: border-color 0.25s, background 0.25s;
+            text-align: center;
         }
         [data-testid="stFileUploaderDropzone"]:hover {
             background: rgba(99,102,241,0.12) !important;
             border-color: rgba(139,92,246,0.6) !important;
         }
-        [data-testid="stFileUploaderDropzoneInstructions"] span {
-            color: #94A3B8 !important;
-            font-size: 0.82rem !important;
+
+        /* Hide the native Browse Files button text & re-inject it */
+        [data-testid="stFileUploaderDropzone"] button {
+            background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.15)) !important;
+            border: 1px solid rgba(99,102,241,0.35) !important;
+            border-radius: 8px !important;
+            color: transparent !important;   /* hide original text */
+            font-size: 0 !important;         /* hide original text */
+            padding: 0.45rem 1.1rem !important;
+            cursor: pointer;
+            position: relative;
+            min-width: 130px;
         }
+        [data-testid="stFileUploaderDropzone"] button::after {
+            content: "📂  Choose File";
+            font-size: 0.84rem !important;
+            font-weight: 600 !important;
+            color: #C4B5FD !important;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+        }
+        [data-testid="stFileUploaderDropzone"] button:hover {
+            background: rgba(99,102,241,0.3) !important;
+            border-color: rgba(139,92,246,0.6) !important;
+        }
+
+        /* Dropzone instruction text */
+        [data-testid="stFileUploaderDropzoneInstructions"] span,
+        [data-testid="stFileUploaderDropzoneInstructions"] small {
+            color: #475569 !important;
+            font-size: 0.78rem !important;
+        }
+        /* Hide the default drag-here text (we rely on the button) */
+        [data-testid="stFileUploaderDropzoneInstructions"] > div > span:first-child {
+            display: none !important;
+        }
+
 
         /* ── Sidebar text inputs ───────────────────────────────── */
         [data-testid="stSidebar"] input[type="text"] {
