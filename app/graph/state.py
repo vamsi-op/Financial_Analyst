@@ -140,9 +140,9 @@ class PipelineState(BaseModel):
         default_factory=list,
         description="Per-page extraction: [{page_num, text, tables}]",
     )
-    tables: list[dict[str, Any]] = Field(
+    tables: list[Any] = Field(
         default_factory=list,
-        description="Extracted tables as list of dicts",
+        description="Extracted tables — raw list[list[list[str]]] from pdfplumber or list[dict]",
     )
     chunks: list[str] = Field(
         default_factory=list,

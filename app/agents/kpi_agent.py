@@ -95,7 +95,7 @@ class KPIAgent(BaseAgent):
     # Deterministic extraction
     # ------------------------------------------------------------------
     def _deterministic_extract(
-        self, text: str, tables: list[dict[str, Any]]
+        self, text: str, tables: list[Any]
     ) -> KPIData:
         """
         Use the financial parser's regex engine to extract KPIs.
