@@ -13,14 +13,22 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # (local_path, repo_path)
 FILES_TO_PUSH = [
-    ("app/frontend/index.html",     "app/frontend/index.html"),
-    ("app/api/main.py",             "app/api/main.py"),
-    ("app/api/routes.py",           "app/api/routes.py"),
-    ("app/graph/state.py",          "app/graph/state.py"),
-    ("app/agents/kpi_agent.py",     "app/agents/kpi_agent.py"),
-    ("Dockerfile",                  "Dockerfile"),
-    ("requirements-hf.txt",         "requirements.txt"),   # HF uses requirements.txt
+    # Core app files
+    ("app/frontend/index.html",         "app/frontend/index.html"),
+    ("app/api/main.py",                 "app/api/main.py"),
+    ("app/api/routes.py",               "app/api/routes.py"),
+    ("app/api/schemas.py",              "app/api/schemas.py"),
+    # Bug fix: PipelineState.tables type
+    ("app/graph/state.py",              "app/graph/state.py"),
+    ("app/agents/kpi_agent.py",         "app/agents/kpi_agent.py"),
+    # Cleanup: removed FrontendConfig
+    ("app/config.py",                   "app/config.py"),
+    # Infra
+    ("Dockerfile",                      "Dockerfile"),
+    ("requirements-hf.txt",            "requirements.txt"),  # HF uses requirements.txt
 ]
+
+COMMIT_MSG = "fix: pass raw_values in KPIResponse so Financial Metrics Overview chart renders"
 
 
 def upload_file(local_path: str, repo_path: str) -> bool:
@@ -33,7 +41,7 @@ def upload_file(local_path: str, repo_path: str) -> bool:
         f"https://huggingface.co/api/spaces/{REPO_ID}/commit/main",
         headers={**HEADERS, "Content-Type": "application/json"},
         data=json.dumps({
-            "summary": f"feat: HTML/JS frontend, remove Streamlit ({repo_path})",
+            "summary": COMMIT_MSG,
             "files": [{"path": repo_path, "encoding": "base64", "content": encoded}]
         }),
         timeout=90,
