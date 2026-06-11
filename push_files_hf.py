@@ -16,6 +16,8 @@ FILES_TO_PUSH = [
     ("app/frontend/index.html",     "app/frontend/index.html"),
     ("app/api/main.py",             "app/api/main.py"),
     ("app/api/routes.py",           "app/api/routes.py"),
+    ("app/graph/state.py",          "app/graph/state.py"),
+    ("app/agents/kpi_agent.py",     "app/agents/kpi_agent.py"),
     ("Dockerfile",                  "Dockerfile"),
     ("requirements-hf.txt",         "requirements.txt"),   # HF uses requirements.txt
 ]
@@ -43,10 +45,10 @@ def upload_file(local_path: str, repo_path: str) -> bool:
 
 
 if __name__ == "__main__":
-    print("Pushing files to HF Space…")
+    print(f"Pushing files to HF Space...")
     ok = 0
     for local, remote in FILES_TO_PUSH:
-        print(f"  Uploading {local} → {remote}")
+        print(f"  Uploading {local} -> {remote}")
         if upload_file(local, remote):
             ok += 1
         time.sleep(1.5)
