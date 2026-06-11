@@ -4,7 +4,7 @@ WORKDIR /app
 
 # System dependencies for PDF processing
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
     libsm6 \
     libxrender1 \
@@ -22,12 +22,8 @@ COPY . .
 # Create runtime directories
 RUN mkdir -p data/uploads data/vectors data/reports
 
-# Expose Streamlit port (HF Spaces expects 7860)
+# HF Spaces expects port 7860
 EXPOSE 7860
 
-# Run Streamlit on port 7860
-CMD ["python", "-m", "streamlit", "run", "app/frontend/app.py", \
-     "--server.port=7860", \
-     "--server.address=0.0.0.0", \
-     "--server.headless=true", \
-     "--browser.gatherUsageStats=false"]
+# Run FastAPI via uvicorn (serves HTML frontend + API)
+CMD ["uvicorn", "app.api.main:app", "--host", "0.0.0.0", "--port", "7860"]

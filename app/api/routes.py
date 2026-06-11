@@ -87,13 +87,14 @@ async def analyze_report(
 
     Returns a job ID that can be used to poll for results.
     """
-    # Validate file type
-    if file.content_type not in ("application/pdf",):
-        if not (file.filename and file.filename.lower().endswith(".pdf")):
-            raise HTTPException(
-                status_code=415,
-                detail=f"Only PDF files are supported. Got: {file.content_type}",
-            )
+    # Validate file type — accept PDF and plain text
+    allowed_exts = (".pdf", ".txt")
+    fname_lower  = (file.filename or "").lower()
+    if not any(fname_lower.endswith(ext) for ext in allowed_exts):
+        raise HTTPException(
+            status_code=415,
+            detail=f"Only PDF and TXT files are supported. Got: {file.filename}",
+        )
 
     # Generate job ID and save file
     job_id = str(uuid.uuid4())
