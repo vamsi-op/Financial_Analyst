@@ -46,10 +46,10 @@ class TestAnalyzeEndpoint:
     """Test the /analyze endpoint."""
 
     def test_reject_non_pdf(self, client):
-        """Non-PDF files should be rejected."""
+        """Unsupported file types (e.g. .csv) should be rejected with 415."""
         response = client.post(
             "/analyze",
-            files={"file": ("test.txt", b"Not a PDF", "text/plain")},
+            files={"file": ("report.csv", b"col1,col2\nval1,val2", "text/csv")},
         )
         assert response.status_code == 415
 

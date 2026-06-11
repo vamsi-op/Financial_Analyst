@@ -147,22 +147,6 @@ class APIConfig:
     max_upload_size_mb: int = 50
 
 
-# ============================================================
-# Frontend Configuration
-# ============================================================
-@dataclass
-class FrontendConfig:
-    """Configuration for the Streamlit frontend."""
-
-    api_base_url: str = "http://localhost:8000"
-    page_title: str = "📊 Financial Analyst"
-    page_icon: str = "📊"
-    layout: str = "wide"
-    theme_primary_color: str = "#6366F1"  # Indigo
-    theme_bg_color: str = "#0F172A"       # Slate-900
-    theme_secondary_bg: str = "#1E293B"   # Slate-800
-    theme_text_color: str = "#F1F5F9"     # Slate-100
-
 
 # ============================================================
 # Master Configuration
@@ -176,7 +160,6 @@ class AppConfig:
     embedding: EmbeddingConfig = field(default_factory=EmbeddingConfig)
     risk: RiskConfig = field(default_factory=RiskConfig)
     api: APIConfig = field(default_factory=APIConfig)
-    frontend: FrontendConfig = field(default_factory=FrontendConfig)
 
     # Logging
     log_level: str = "INFO"
