@@ -65,6 +65,10 @@ class KPIResponse(BaseModel):
     free_cash_flow: Optional[str] = None
     confidence: dict[str, float] = Field(default_factory=dict)
     extraction_method: str = "hybrid"
+    raw_values: dict[str, float] = Field(
+        default_factory=dict,
+        description="Raw numeric values used for chart rendering",
+    )
 
 
 class RiskFactorResponse(BaseModel):

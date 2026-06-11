@@ -198,6 +198,7 @@ def _state_to_response(state) -> FullReportResponse:
         free_cash_flow=state.kpis.free_cash_flow,
         confidence=state.kpis.confidence,
         extraction_method=state.kpis.extraction_method,
+        raw_values=state.kpis.raw_values,
     )
 
     # Risk
